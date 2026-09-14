@@ -1,28 +1,29 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//Â© A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
 //Lab  -
 
 import javax.swing.JFrame;
+import java.awt.Component;
 
-public class BlockGame extends JFrame
+public class Tester extends JFrame
 {
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
 
-	public BlockGame()
+	public Tester()
 	{
-		super("Board");
+		super("BLOCK TESTER");
 		setSize(WIDTH,HEIGHT);
-						
-		getContentPane().add(new Board(500,500));
-				
+		
+		getContentPane().add(new BlockTestTwo());		
+		
 		setVisible(true);
 	}
 	
 	public static void main( String args[] )
 	{
-		BlockGame run = new BlockGame();
+		Tester run = new Tester();
 	}
 }
