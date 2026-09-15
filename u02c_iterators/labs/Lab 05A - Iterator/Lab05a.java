@@ -5,51 +5,25 @@ import static java.lang.System.*;
 
 public class Lab05a
 {
-   public static void main( String[] args )
+   public static void main(String[] args)
    {
-      ArrayList<String> myList = new ArrayList<String>();
-      testRemove(myList);
-      testReplace(myList);
-   }
-      
-   public static void testRemove(ArrayList<String> myList) {
-      IteratorTest.populateListFromString(myList, "a b c a b c");
-      String toRemove = "a";
-      out.println("list before removing " + toRemove + ":  " + myList);
-      IteratorTest.remove(myList, toRemove);
-      out.println("    list after removal:  " + myList + "\n\n");
-      
-      IteratorTest.populateListFromString(myList, "a b c d e f g h i j x x x x");
-      toRemove = "x";
-      out.println("list before removing " + toRemove + ":  " + myList);
-      IteratorTest.remove(myList, toRemove);
-      out.println("    list after removal:  " + myList + "\n\n");      
-   
-      IteratorTest.populateListFromString(myList, "1 2 3 4 5 6 a b c a b c");
-      toRemove = "b";
-      out.println("list before removing " + toRemove + ":  " + myList);
-      IteratorTest.remove(myList, toRemove);
-      out.println("    list after removal:  " + myList + "\n\n");
-   }
-   
-   public static void testReplace(ArrayList<String> myList)
-   {
-      IteratorTest.populateListFromString(myList, "a b c a b c");
-      String toRemove = "a", toReplace = "+";
-      out.println("list before replacing " + toRemove + " with " + toReplace + ": " + myList);
-      IteratorTest.replace(myList, toRemove, toReplace);
-      out.println("        list after replacement: " + myList + "\n\n");
-            
-      IteratorTest.populateListFromString(myList, "a b c d e f g h i j x x x x");
-      toRemove = "x"; toReplace = "7";
-      out.println("list before replacing " + toRemove + " with " + toReplace + ": " + myList);
-      IteratorTest.replace(myList, toRemove, toReplace);
-      out.println("        list after replacement: " + myList + "\n\n");   
+      ArrayList<String> list = new ArrayList<String>();
 
-      IteratorTest.populateListFromString(myList, "1 2 3 4 5 6 a b c a b c");
-      toRemove = "b"; toReplace = "#";
-      out.println("list before replacing " + toRemove + " with " + toReplace + ": " + myList);
-      IteratorTest.replace(myList, toRemove, toReplace);
-      out.println("        list after replacement: " + myList + "\n\n");  
+      // Test populateListFromString
+      IteratorTest.populateListFromString(list, "A B C D E");
+      out.println("Original List: " + list);
+
+      // Test addToListFromString
+      IteratorTest.addToListFromString(list, "F G H");
+      out.println("After Adding: " + list);
+
+      // Test remove
+      IteratorTest.remove(list, "C");
+      out.println("After Removing C: " + list);
+
+      // Test replace
+      IteratorTest.replace(list, "F", "Z");
+      out.println("After Replacing F with Z: " + list);
    }
 }
+
