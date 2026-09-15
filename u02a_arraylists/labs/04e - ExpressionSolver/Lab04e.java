@@ -1,17 +1,18 @@
-//© A+ Computer Science  -  www.apluscompsci.com
-//Name -
-//Date -
-//Class -
-//Lab  -
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import static java.lang.Integer.*;
-import static java.lang.System.*;
 
-public class Lab04e
-{
-	public static void main( String args[] )
-	{
-	}
+public class Lab04e {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter an expression (e.g. 5+3*2): ");
+        String input = scanner.nextLine();
+        
+        ExpressionSolver solver = new ExpressionSolver(input);
+        solver.solveExpression();
+        
+        System.out.println(solver.toString());
+        
+        scanner.close();
+    }
 }
