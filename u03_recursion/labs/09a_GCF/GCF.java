@@ -1,8 +1,8 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//Â© A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
-//Lab  -
+//Lab -
 
 import java.util.*;
 import static java.lang.System.*;
@@ -13,8 +13,11 @@ public class GCF
 	
 	public static int gcf(int n1, int n2)
 	{
-		
-		
-		return 0;
+		if(n2 == 0)
+			return n1;
+		else
+			return gcf(n2, n1 % n2);
 	}
 }
+
+
