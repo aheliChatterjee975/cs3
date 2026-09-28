@@ -1,9 +1,3 @@
-//Â© A+ Computer Science  -  www.apluscompsci.com
-//Name -
-//Date -
-//Class -
-//Lab  - 
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -23,15 +17,19 @@ public class GarbageCollector extends JPanel implements MouseListener
 	{
 		mouseClicked = false;
 		trashMap = new Grid(rows,cols);
-		
 		for(int r=0; r<trashMap.getNumRows(); r++)
 		{
 			for(int c=0; c<trashMap.getNumCols(); c++)
 			{
 				int num = (int)(Math.random()*2);
-				
-				if(num == 1)
-					trashMap.setSpot(r,c,new ColoredCell(c*cols+10, r*rows+10, 10, 10, true, Color.ORANGE));
+				if(num == 1) {
+					trashMap.setSpot(r,c,new ColoredCell(r*rows+10, c*cols+10, 10, 10, true, Color.ORANGE));
+            }
+            else {
+               trashMap.setSpot(r,c,new ColoredCell(r*rows+10, c*cols+10, 10, 10, false, Color.ORANGE));
+            }  
+				//else
+					//load in a different Cell
 			}
 		}
 
@@ -49,64 +47,45 @@ public class GarbageCollector extends JPanel implements MouseListener
 		repaint();
 	}
 
-	public void paintComponent(Graphics window)
+	public void paintComponent( Graphics window )
 	{
 		super.paintComponent(window);
-		
 		window.setFont(new Font("TAHOMA",Font.BOLD,12));
 		window.setColor(Color.blue);
 		window.drawString("Lab24c",420,40);
-		window.drawString("THE GARBAGE COLLECTOR LAB",420,55);
-		
-		if(mouseClicked)
+		window.drawString("THE GARBAGE COLLECTOR LAB", 420,55);
+		if (mouseClicked)
 		{
-			int r = mouseY/rows;
-			int c = mouseX/cols;
-			
-			pickUpTrash(r,c);
+			int c = mouseY/cols;
+			int r = mouseX/rows;
+			pickUpTrash(r,c, window);
 			mouseClicked = false;
 		}
-		
 		drawTrashMap(window);
 	}
 
-	public void drawTrashMap(Graphics window)
+	public void drawTrashMap( Graphics window  )
 	{
-		trashMap.drawGrid(window);
+      for(int r = 0; r < trashMap.getNumRows(); r++) {
+         for(int c = 0; c < trashMap.getNumCols(); c++) {
+            Cell cell = trashMap.getSpot(r,c);
+            cell.draw(window);
+          }
+      }
 	}
 
-	public void pickUpTrash(int r, int c)
+	public void pickUpTrash( int r, int c, Graphics window )
 	{
-		if(r < 0 || r >= trashMap.getNumRows())
-		{
-			return;
-		}
-		
-		if(c < 0 || c >= trashMap.getNumCols())
-		{
-			return;
-		}
-		
-		Cell spot = trashMap.getSpot(r,c);
-		
-		if(spot == null)
-		{
-			return;
-		}
-		
-		ColoredCell cell = (ColoredCell)spot;
-		
-		if(!cell.getFilled())
-		{
-			return;
-		}
-		
-		cell.setFilled(false);
-		
-		pickUpTrash(r-1,c);
-		pickUpTrash(r+1,c);
-		pickUpTrash(r,c-1);
-		pickUpTrash(r,c+1);
+	   if(r < trashMap.getNumRows() && r >= 0 && c < trashMap.getNumCols() && c >= 0) {
+         ColoredCell cell = (ColoredCell)trashMap.getSpot(r,c);
+         if(cell!=null && cell.getFilled()) {
+            cell.setFilled(false);
+            pickUpTrash(r+1,c, window);
+            pickUpTrash(r-1,c, window);
+            pickUpTrash(r,c-1, window);
+            pickUpTrash(r,c+1, window);
+         }
+      }
 	}
 
 	public void mouseEntered(MouseEvent e) { }

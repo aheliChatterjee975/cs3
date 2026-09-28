@@ -16,40 +16,46 @@ public class ColoredCell extends Cell
 
 	public ColoredCell(boolean fill)
 	{
-		super(5,5,5,5);
-		setFilled(fill);
-		setColor(Color.BLUE);
+      setFilled(fill);
+      setColor(Color.BLUE);		
+
 	}
 
 	public ColoredCell(int x, int y, boolean fill)
 	{
-		super(x,y,5,5);
-		setFilled(fill);
-		setColor(Color.BLUE);
+      setPos(x,y);
+      setFilled(fill);
+      setColor(Color.BLUE);		
+
 	}
 
 	public ColoredCell(int x, int y, int w, int h, boolean fill)
 	{
-		super(x,y,w,h);
-		setFilled(fill);
-		setColor(Color.BLUE);
+      setPos(x,y);
+      setWidth(w);
+      setHeight(h);
+      setFilled(fill);
+      setColor(Color.BLUE);		
+
 	}
 
 	public ColoredCell(int x, int y, int w, int h, boolean fill, Color c)
 	{
-		super(x,y,w,h);
-		setFilled(fill);
-		setColor(c);
+      setPos(x,y);
+      setWidth(w);
+      setHeight(h);
+      setFilled(fill);
+      setColor(c);
 	}
 
 	public void setFilled(boolean fill)
 	{
-		filled = fill;
+      filled = fill;
 	}
 
 	public void setColor(Color c)
 	{
-		color = c;
+      color = c;
 	}
 	
 	public boolean getFilled()
@@ -67,11 +73,10 @@ public class ColoredCell extends Cell
 		window.setFont(new Font("TAHOMA",Font.BOLD,28));
 		window.setColor(getColor());
 		window.drawRect(getX(),getY(),getWidth(),getHeight());
-
-		if(getFilled())
-		{
-			window.fillRect(getX(),getY(),getWidth(),getHeight());
-		}
+      if(filled) {
+         window.setColor(Color.GREEN);
+         window.fillRect(getX(),getY(),getWidth(),getHeight());
+      }
 	}
 	
 	public String toString()
@@ -79,3 +84,4 @@ public class ColoredCell extends Cell
 		return super.toString() + " " + getFilled() + " " + getColor();
 	}
 }
+
