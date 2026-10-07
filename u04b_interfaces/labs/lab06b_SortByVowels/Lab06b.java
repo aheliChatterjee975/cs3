@@ -1,8 +1,8 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//Â© A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
-//Lab  -
+//Lab -
 
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +13,22 @@ import static java.lang.System.*;
 
 public class Lab06b
 {
-	public static void main( String args[] ) throws IOException
+	public static void main(String args[]) throws IOException
 	{
-		//add test cases		
+		ArrayList<VowelWord> words = new ArrayList<VowelWord>();
+
+		Scanner file = new Scanner(new File("lab06b.dat"));
+
+		while(file.hasNext())
+      {
+         words.add(new VowelWord(file.next()));
+      }
+
+		Collections.sort(words);
+
+		for(VowelWord word : words)
+		{
+			out.println(word + " ");
+		}
 	}
 }

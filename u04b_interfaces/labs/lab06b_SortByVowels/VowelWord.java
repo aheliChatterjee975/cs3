@@ -1,31 +1,48 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//Â© A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
-//Lab  -
+//Lab -
 
 import static java.lang.System.*;
 
 class VowelWord implements Comparable<VowelWord>
 {
-	//add a string instance variable
-	
-	//add a constructor
+	private String word;
+
+	public VowelWord(String word)
+	{
+		this.word = word;
+	}
 
 	private int numVowels()
 	{
 		String vowels = "AEIOUaeiou";
-		int vowelCount=0;
+		int vowelCount = 0;
+
+		for(int i = 0; i < word.length(); i++)
+		{
+			if(vowels.indexOf(word.charAt(i)) >= 0)
+			{
+				vowelCount++;
+			}
+		}
+
 		return vowelCount;
 	}
 
 	public int compareTo(VowelWord other)
 	{
-		return -1;
+		if(numVowels() != other.numVowels())
+		{
+			return numVowels() - other.numVowels();
+		}
+
+		return word.compareTo(other.word);
 	}
 
 	public String toString()
 	{
-		return "";
+		return word;
 	}
 }
