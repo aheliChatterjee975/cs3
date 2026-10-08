@@ -1,22 +1,35 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//Â© A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
-//Lab  -
+//Lab -
 
 import static java.lang.System.*;
 
 class SiteName implements Comparable<SiteName>
 {
-	//add instance variables
-	
-	
-	//add a constructor
+	private String site;
 
+	public SiteName(String s)
+	{
+		site = s;
+	}
 
-	//add a compareTo
+	public int compareTo(SiteName other)
+	{
+		String category = site.substring(site.lastIndexOf("."));
+		String otherCategory = other.site.substring(other.site.lastIndexOf("."));
 
+		if(!category.equals(otherCategory))
+		{
+			return category.compareTo(otherCategory);
+		}
 
-	//add a toString
+		return site.compareTo(other.site);
+	}
 
+	public String toString()
+	{
+		return site;
+	}
 }
